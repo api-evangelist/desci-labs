@@ -1,0 +1,38 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/desci-labs/nodes/blob/develop/nodes-lib/README.md, https://github.com/desci-labs/sciweave-mcp
+summary:
+  types:
+  - none
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows: []
+note: >-
+  The public dPID Resolver API (beta.dpid.org) requires no authentication — it is a read-only
+  resolver with no securitySchemes in its OpenAPI. The DeSci Nodes backend (desci-server, via
+  @desci-labs/nodes-lib) authenticates with a per-user API key created under the profile at
+  nodes.desci.com and set via setApiKey; write operations on draft nodes additionally require
+  cryptographic signing (Metamask signer or a private-key signer). The SciWeave MCP server
+  authenticates with OAuth 2.0 or a Bearer API key.
+schemes:
+- name: dpid-resolver-public
+  service: dPID Resolver API
+  type: none
+  applies_to: https://beta.dpid.org/api
+- name: nodes-api-key
+  service: DeSci Nodes backend (desci-server)
+  type: apiKey
+  in: header
+  docs: https://desci-labs.github.io/nodes/
+  note: API key generated at nodes.desci.com profile; set via nodes-lib setApiKey().
+- name: nodes-signer
+  service: DeSci Nodes publishing
+  type: crypto-signature
+  note: Metamask signer or signerFromPkey private-key signer for publishing/on-chain actions.
+- name: sciweave-mcp-oauth
+  service: SciWeave MCP Server
+  type: oauth2
+  alt: bearer
+  docs: https://mcp.sciweave.com
