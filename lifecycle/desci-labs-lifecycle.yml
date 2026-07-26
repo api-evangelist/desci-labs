@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://beta.dpid.org/api-docs.json, https://status.desci.com
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://beta.dpid.org/api-docs/
+  note: dPID Resolver API is at /v2; nodes-lib client library at 0.2.x (semver, npm)
+deprecation:
+  policy_url: null
+  sunset_header: false
+sla:
+  url: null
+status_page: https://status.desci.com
+environments:
+- name: production
+  url: https://beta.dpid.org/api
+- name: development
+  url: https://dev-beta.dpid.org/api
+deprecated_operations: []

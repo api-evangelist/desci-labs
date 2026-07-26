@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/desci-labs/nodes/blob/develop/nodes-lib/README.md, https://github.com/desci-labs/dpid-resolver
+note: DeSci Labs exposes distinct development/testnet environments rather than magic test tokens. No fabricated test values.
+environments:
+- name: production
+  nodes_app: https://nodes.desci.com
+  dpid_resolver: https://beta.dpid.org/api
+  description: Mainnet — live research objects and dPID registry.
+- name: development
+  nodes_app: https://nodes-dev.desci.com
+  dpid_resolver: https://dev-beta.dpid.org/api
+  description: Testnet — create/publish draft nodes and resolve dPIDs against the development chain.
+- name: local
+  description: Locally running docker-compose cluster; nodes-lib preset NODESLIB_CONFIGS.local; resolver Swagger at http://localhost:5461/api-docs.
+config:
+  library: "@desci-labs/nodes-lib"
+  target_selector: setNodesLibConfig (default targets https://nodes-dev.desci.com)
+  demo: nodes-integration-template repo (demo.ts, run with `npm run demo`) creates a draft node end-to-end
+api_key_creation: Create an API key under your profile at https://nodes-dev.desci.com/profile (dev) or https://nodes.desci.com/profile (prod).

@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/desci-labs-dpid-resolver-openapi.json
+skills:
+- file: desci-labs-resolve-dpid.md
+  name: Resolve a dPID to a research object
+  api: openapi/desci-labs-dpid-resolver-openapi.json
+  operations:
+  - GET /v2/resolve/dpid/{dpid}/{versionIx}
+  - GET /v2/resolve/{path}
+  - GET /v2/data/dpid/{dpid}
+  - GET /v2/data/dpid/{dpid}/*
+  - GET /v2/query/history/{id}
+- file: desci-labs-query-research-objects.md
+  name: Query and page through research objects
+  api: openapi/desci-labs-dpid-resolver-openapi.json
+  operations:
+  - GET /v2/query/dpids
+  - GET /v2/query/objects
+  - GET /v2/query/owner/{id}
+  - GET /v2/query/reverse/{id}
+  - POST /v2/query/history

@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for dPID Resolver API
+  version: 1.0.0
+extends: openapi/desci-labs-dpid-resolver-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: desci-labs
+    x-apievangelist-category:
+    - research-infrastructure
+    - decentralized-identifiers
+    - scholarly-communication
+    x-agentic-access-profile: agentic-access/desci-labs-agentic-access.yml
+- target: $.info
+  update:
+    x-authentication: none-public-read
+    x-conventions: conventions/desci-labs-conventions.yml
+    x-error-catalog: errors/desci-labs-problem-types.yml

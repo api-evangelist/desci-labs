@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://github.com/desci-labs/sciweave-mcp
+server:
+  name: SciWeave MCP Server
+  vendor: DeSci Labs
+  transport: http
+  url: https://mcp.sciweave.com/mcp
+  authentication: OAuth 2.0 or Bearer token (free API key at mcp.sciweave.com, 50 starting credits)
+  install:
+    claude_cli: claude mcp add --transport http sciweave https://mcp.sciweave.com/mcp
+    claude_ai: Settings -> Connectors -> Add custom connector with URL + API key
+  description: Claude connector for research paper search and AI-powered answers grounded in SciWeave's index of 300M+ scientific works; all tools are read-only and return verifiable DOIs.
+tools:
+- name: ask_research_question
+  description: AI answer with inline citations grounded in SciWeave's index, with year filtering.
+- name: find_references
+  description: Fast paper lookup returning metadata and DOI without AI synthesis.
+- name: get_research_thread
+  description: Resume prior research conversations by thread ID.
+- name: list_collections
+  description: Display saved paper collections.
+- name: get_collection_papers
+  description: Retrieve papers within a specific collection.
+- name: get_account_status
+  description: Check remaining credits and account information.

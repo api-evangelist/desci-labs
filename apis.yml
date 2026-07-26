@@ -1,24 +1,152 @@
 aid: desci-labs
 name: DeSci Labs
-description: 'DeSci Labs is a company surfaced as a portfolio company of hv-capital and added to the API
-  Evangelist network as a stub for enrichment. Sector: ai-enterprise-software. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  DeSci Labs builds decentralized-science infrastructure for open, verifiable, and AI-native
+  scholarly communication. Its products include DeSci Publish (DeSci Nodes) — a preprint and
+  open-access publishing platform with rapid peer review and versioned, PID-addressed research
+  objects; SciWeave — an AI research-discovery engine over 300M+ scientific works that ships a
+  hosted Model Context Protocol (MCP) server; the DeSci Referee Finder for editorial reviewer
+  matching; and the open-source dPID Resolver, an HTTP API that bridges decentralized persistent
+  identifiers (dPIDs) to IPFS content and the Ceramic network. Developers integrate via the
+  @desci-labs/nodes-lib client library and the public dPID Resolver API. Backed by hv-capital.
 url: https://raw.githubusercontent.com/api-evangelist/desci-labs/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/desci-labs
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - hv-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Ai Enterprise Software
-apis: []
+- Research Infrastructure
+- Decentralized Science
+- Scholarly Communication
+- Persistent Identifiers
+- Open Access
+- AI Research Tools
+- IPFS
+- Model Context Protocol
+apis:
+- aid: desci-labs:desci-labs-data-api
+  name: DeSci Labs Data API
+  description: >-
+    **Data utilities** - IPFS-related utilities like folder tree listing by dPID or CID. Useful for directory
+    browsing UIs and content explorers.
+  humanURL: https://beta.dpid.org/api-docs/
+  baseURL: https://beta.dpid.org/api
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/desci-labs-data-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/desci-labs-problem-types.yml
+  - type: DataModel
+    url: data-model/desci-labs-data-model.yml
+- aid: desci-labs:desci-labs-query-api
+  name: DeSci Labs Query API
+  description: >-
+    **Research discovery and browse functionality** - Ideal for browse pages, search, and analytics. Paginated
+    lists of research objects with optional metadata resolution, version history, and filtering capabilities.
+  humanURL: https://beta.dpid.org/api-docs/
+  baseURL: https://beta.dpid.org/api
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/desci-labs-query-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/desci-labs-problem-types.yml
+  - type: DataModel
+    url: data-model/desci-labs-data-model.yml
+- aid: desci-labs:desci-labs-resolve-api
+  name: DeSci Labs Resolve API
+  description: >-
+    **Individual research object resolution** - Perfect for detail pages, file access, and direct DPID
+    links. Get complete research objects with full version history, specific files, or content in different
+    formats (raw IPFS, MyST, JSON-LD).
+  humanURL: https://beta.dpid.org/api-docs/
+  baseURL: https://beta.dpid.org/api
+  tags:
+  - Resolve
+  properties:
+  - type: OpenAPI
+    url: openapi/desci-labs-resolve-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/desci-labs-problem-types.yml
+  - type: DataModel
+    url: data-model/desci-labs-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/desci-labs-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/desci-labs-agentic-access.yml
+- type: Packages
+  url: packages/desci-labs-packages.yml
+- type: SDKs
+  url: packages/desci-labs-packages.yml
+- type: MCPServer
+  url: mcp/desci-labs-mcp.yml
+- type: LLMsTxt
+  url: llms/desci-labs-llms.txt
+- type: Authentication
+  url: authentication/desci-labs-authentication.yml
+- type: Conventions
+  url: conventions/desci-labs-conventions.yml
+- type: Conformance
+  url: conformance/desci-labs-conformance.yml
+- type: Lifecycle
+  url: lifecycle/desci-labs-lifecycle.yml
+- type: StatusPage
+  url: https://status.desci.com
+- type: Sandbox
+  url: sandbox/desci-labs-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Documentation
+  url: https://docs.desci.com
+- type: APIReference
+  url: https://beta.dpid.org/api-docs/
+- type: DeveloperPortal
+  url: https://desci-labs.github.io/nodes/
+- type: GettingStarted
+  url: https://github.com/desci-labs/nodes-integration-template
+- type: GitHubOrganization
+  url: https://github.com/desci-labs
+- type: Blog
+  url: https://www.desci.com/blog
+- type: Support
+  url: https://docs.desci.com/find-help
+- type: SignUp
+  url: https://nodes.desci.com
+- type: TermsOfService
+  url: https://www.desci.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.desci.com/privacy
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

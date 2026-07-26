@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/ on DeSci Labs hosts
+note: No /.well-known/ discovery documents were served by any DeSci Labs host at probe time. Absence recorded as valid data; no WellKnown/SecurityTxt pointer wired.
+hosts:
+- host: https://www.desci.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://nodes.desci.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://docs.desci.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://beta.dpid.org
+  documents:
+  - path: /.well-known/security.txt
+    status: 400

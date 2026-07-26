@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/desci-labs-dpid-resolver-openapi.json
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: openapi 3.0.0 document served at https://beta.dpid.org/api-docs.json
+- id: rest-http
+  conforms: true
+  evidence: resource-oriented HTTP JSON API over GET/POST
+- id: pagination
+  conforms: true
+  evidence: /v2/query/dpids supports page/size/sort query params with a pagination response object
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a custom JSON envelope (ErrorResponse) with application/json, not application/problem+json
+- id: oauth2
+  conforms: false
+  evidence: dPID Resolver is a public read API with no securitySchemes; SciWeave MCP uses OAuth2 separately
+- id: content-addressing-ipfs
+  conforms: true
+  evidence: resolver bridges dPIDs to IPFS CIDs and Ceramic streams; format=raw redirects to IPFS gateway

@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: beta.dpid.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 22 16:32:53 2026 GMT
+  hsts: null
+- host: dev-beta.dpid.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 14 01:59:17 2026 GMT
+  hsts: null
+domains:
+- domain: dpid.org
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

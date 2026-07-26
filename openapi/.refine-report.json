@@ -1,0 +1,18 @@
+{
+  "provider": "desci-labs",
+  "sources": [
+    "desci-labs-data-api-openapi.yml",
+    "desci-labs-query-api-openapi.yml",
+    "desci-labs-resolve-api-openapi.yml"
+  ],
+  "outputs": [
+    "desci-labs-data-api-openapi.yml",
+    "desci-labs-query-api-openapi.yml",
+    "desci-labs-resolve-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/desci-labs-dpid-resolver-openapi.json, https://github.com/desci-labs/dpid-resolver
+authentication:
+  style: none (public read resolver); API key + signer for the Nodes backend
+  ref: authentication/desci-labs-authentication.yml
+versioning:
+  style: uri-path
+  current: v2
+  ref: lifecycle/desci-labs-lifecycle.yml
+pagination:
+  style: page-number
+  params:
+  - page
+  - size
+  - sort
+  response_fields:
+  - dpids
+  - pagination
+  max_page_size: 100
+  applies_to: /v2/query/dpids
+idempotency:
+  supported: false
+  note: Resolver read operations (GET) are naturally idempotent, but the provider documents no idempotency-key contract for writes.
+error_envelope:
+  media_type: application/json
+  schema: ErrorResponse
+  fields:
+  - error
+  - details
+  - params
+  - path
+  ref: errors/desci-labs-problem-types.yml
+content_addressing:
+  note: Resolves dPIDs to IPFS CIDs and Ceramic streams; format=raw redirects (302) to an IPFS gateway.
+rate_limiting:
+  signal: none documented

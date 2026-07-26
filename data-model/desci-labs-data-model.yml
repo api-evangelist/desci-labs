@@ -1,0 +1,76 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/desci-labs-dpid-resolver-openapi.json
+entities:
+- name: ResearchObject
+  id_field: id
+  fields:
+  - id
+  - owner
+  - manifest
+  - title
+  description: A dPID-addressed research object (Node).
+- name: DpidQueryResult
+  id_field: dpid
+  fields:
+  - dpid
+  - owner
+  - latestCid
+  - versionCount
+  - source
+  - versions
+  - metadata
+  - links
+- name: DpidVersion
+  id_field: index
+  fields:
+  - index
+  - cid
+  - time
+  - resolveUrl
+- name: ResearchObjectHistory
+  fields:
+  - version
+  - manifest
+  - timestamp
+- name: ManifestMetadata
+  fields:
+  - title
+  - description
+  - authors
+  - keywords
+  - license
+- name: IpfsEntry
+  id_field: cid
+  fields:
+  - name
+  - path
+  - cid
+  - size
+  - type
+  - children
+relationships:
+- from: DpidQueryResult
+  to: DpidVersion
+  type: has_many
+  via: versions
+- from: ResearchObject
+  to: ManifestMetadata
+  type: has_one
+  via: manifest
+- from: DpidQueryResult
+  to: ManifestMetadata
+  type: has_one
+  via: metadata
+- from: IpfsEntry
+  to: IpfsEntry
+  type: has_many
+  via: children
+- from: ResearchObjectHistory
+  to: ManifestMetadata
+  type: has_one
+  via: manifest
+identifiers:
+  dpid: Decentralized persistent identifier (integer index in the dPID registry)
+  cid: IPFS content identifier
+  streamId: Ceramic stream id (reverse-resolvable to a dPID)

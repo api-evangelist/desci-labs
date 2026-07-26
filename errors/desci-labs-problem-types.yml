@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/desci-labs-dpid-resolver-openapi.json
+format: custom-json
+envelope:
+  media_type: application/json
+  schema: ErrorResponse
+  fields:
+  - error
+  - details
+  - params
+  - path
+problems:
+- status: 400
+  title: Invalid dpid
+  description: The supplied dPID or request parameters could not be parsed.
+  source_operation: openapi/desci-labs-dpid-resolver-openapi.json#GET /v2/data/dpid/{dpid}
+- status: 404
+  title: Path not found
+  description: No component exists at the requested path within the dPID/research object.
+  source_operation: openapi/desci-labs-dpid-resolver-openapi.json#GET /v2/data/dpid/{dpid}/*
+- status: 500
+  title: Failed to build folder tree
+  description: The resolver could not assemble the IPFS folder tree for the research object root.
+  source_operation: openapi/desci-labs-dpid-resolver-openapi.json#GET /v2/data/dpid/{dpid}
