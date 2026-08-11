@@ -99,6 +99,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/desci-labs-dpid-resolver-overlay.yaml
 - type: DomainSecurity
   url: security/desci-labs-domain-security.yml
 - type: AgenticAccess
