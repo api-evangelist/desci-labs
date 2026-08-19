@@ -1,0 +1,811 @@
+{
+  "item": [
+    {
+      "id": "41352f7c-4044-4e47-b04f-df35b3bdf79f",
+      "name": "Resolve",
+      "description": {
+        "content": "**Individual research object resolution** - Perfect for detail pages, file access, and direct DPID links. Get complete research objects with full version history, specific files, or content in different formats (raw IPFS, MyST, JSON-LD).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0a68d41-bddd-42d0-9816-3eb151f04317",
+          "name": "Resolve DPID to full research object history and metadata",
+          "request": {
+            "name": "Resolve DPID to full research object history and metadata",
+            "description": {
+              "content": "**Primary endpoint for DPID detail pages**. Resolves a DPID to its complete research object\ninformation including version history, metadata, and manifest details.\n\n## Key Features\n- **Complete History**: Returns all versions with timestamps and manifests\n- **Version Selection**: Optionally specify a version (v1, v2, etc. or 0-based index)\n- **Stream Integration**: Works with both Ceramic streams and legacy DPIDs\n- **Metadata Rich**: Includes owner, timestamps, and version progression\n\n## Common Usage Patterns\n\n**Detail Page (Latest Version)**:\n```\nGET /v2/resolve/dpid/123\n```\n\n**Detail Page (Specific Version)**:\n```\nGET /v2/resolve/dpid/123/v2\nGET /v2/resolve/dpid/123/1    // 0-based index\n```\n\n**Version Comparison UI**:\n```\nGET /v2/resolve/dpid/123      // Get all versions\nGET /v2/resolve/dpid/123/v1   // Get specific version for comparison\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "resolve",
+                "dpid",
+                ":dpid",
+                ":versionIx"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dpid",
+                  "description": "(Required) The DPID number to resolve"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionIx",
+                  "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf9d9ce4-8fb2-4868-b5e4-1d6686098992",
+              "name": "Successfully resolved dpid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "dpid",
+                    ":dpid",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The DPID number to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"kjzl6kcym7w8y9pw8d6y8lbfkqr673iecf3qsc6d4aaubzhfa11rcn3pp2nr7q8\",\n  \"owner\": \"did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK\",\n  \"manifest\": \"bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi\",\n  \"versions\": [\n    {\n      \"version\": \"k6zn3ty0zptz50xjcqpiayrpowe4gr8f29zkp4up1bj7xg9wk65ea6aln2n8e6kb7hbnbd787v08gqrq3gainac2lg6csr8r8v8c8flc5xszo2kfbtbfzbb\",\n      \"manifest\": \"bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi\",\n      \"time\": 1678901234\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e08ec212-18d2-4ad3-b51b-5d5f60f03c79",
+              "name": "Invalid dPID format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "dpid",
+                    ":dpid",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The DPID number to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1efc2ae3-aad5-4a18-97cd-9eca8b68268c",
+              "name": "dPID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "dpid",
+                    ":dpid",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The DPID number to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09ca7081-763c-4ef7-a0cd-c936b1c2aa1c",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "dpid",
+                    ":dpid",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The DPID number to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "482d35f6-51cf-4496-8c88-c6db4f837ebb",
+          "name": "Resolve streamId to manifest",
+          "request": {
+            "name": "Resolve streamId to manifest",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "resolve",
+                "codex",
+                ":streamOrCommitId",
+                ":versionIx"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamOrCommitId",
+                  "description": "(Required) The stream or commit ID to resolve"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionIx",
+                  "description": "Optional version index"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbbc3c69-e335-4028-be9f-2626141216ba",
+              "name": "Successfully resolved stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "codex",
+                    ":streamOrCommitId",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamOrCommitId",
+                      "description": "(Required) The stream or commit ID to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner\": \"did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK\",\n  \"manifest\": \"bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi\",\n  \"versions\": [\n    {\n      \"version\": \"k6zn3ty0zptz50xjcqpiayrpowe4gr8f29zkp4up1bj7xg9wk65ea6aln2n8e6kb7hbnbd787v08gqrq3gainac2lg6csr8r8v8c8flc5xszo2kfbtbfzbb\",\n      \"manifest\": \"bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi\",\n      \"time\": 1678901234\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "781ed57b-89bf-4c24-b3a1-27643da26adb",
+              "name": "Invalid stream or commit ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "codex",
+                    ":streamOrCommitId",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamOrCommitId",
+                      "description": "(Required) The stream or commit ID to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcc01cbd-fe1e-4268-8cb6-3a9da5e3e51c",
+              "name": "Stream not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    "codex",
+                    ":streamOrCommitId",
+                    ":versionIx"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamOrCommitId",
+                      "description": "(Required) The stream or commit ID to resolve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionIx",
+                      "description": "Optional version index"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9c3101a-211a-4883-ba38-bd1b5d375cea",
+          "name": "Universal DPID resolver with flexible path and format support",
+          "request": {
+            "name": "Universal DPID resolver with flexible path and format support",
+            "description": {
+              "content": "**Universal resolver for all DPID access patterns**. This endpoint handles the most\nflexible resolution patterns and is ideal for:\n- **Direct DPID links**: Handle user-facing URLs like dpid.org/123\n- **File access**: Access specific files within research objects\n- **Format conversion**: Get content in different formats (raw, MyST, JSON-LD)\n- **Version browsing**: Access any version of any DPID with intuitive URLs\n\n## Path Format\n```\n/{dpid}[/version][/path/to/file][?format=raw|myst|jsonld]\n```\n\n## Common Usage Patterns\n\n**Simple DPID resolution (detail page)**:\n```\nGET /v2/resolve/123                     # Latest version, raw IPFS redirect (default)\nGET /v2/resolve/123/v2                  # Specific version, raw IPFS redirect\nGET /v2/resolve/123?format=json         # JSON API response with metadata\n```\n\n**Note**: All patterns work with shorthand URLs (e.g., `/123/root` → `/v2/resolve/123/root`)\n\n**File browsing within research objects**:\n```\nGET /v2/resolve/123/root                # Browse root directory (file listing)\nGET /v2/resolve/123/root/manuscript.pdf # Access file via root path\nGET /v2/resolve/123/v1/root             # Browse root of specific version\nGET /v2/resolve/123/data/results.csv    # Access file in subdirectory\nGET /v2/resolve/123/v1/data/results.csv # Access file in specific version\n```\n\n**Direct file downloads (IPFS redirects - default behavior)**:\n```\nGET /v2/resolve/123                               # Redirect to latest manifest (default)\nGET /v2/resolve/123/root                          # Browse files via IPFS gateway (default)\nGET /v2/resolve/123/root/paper.pdf                # Direct download via IPFS (default)\nGET /v2/resolve/123/v2/root/data.csv              # Version-specific file download (default)\n```\n\n**Format conversion for different UIs**:\n```\nGET /v2/resolve/123?format=json         # JSON API response with metadata\nGET /v2/resolve/123?format=jsonld       # Structured metadata (Semantic Web)\nGET /v2/resolve/123?format=myst         # MyST Markdown format\nGET /v2/resolve/123?format=raw          # Explicit IPFS redirect (same as default)\n```\n\n**Version comparison workflows**:\n```\nGET /v2/resolve/123/v1/data/            # List files in version 1\nGET /v2/resolve/123/v2/data/            # List files in version 2\nGET /v2/resolve/123/v1/data/results.csv # Compare specific files\nGET /v2/resolve/123/v2/data/results.csv\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "resolve",
+                ":path"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "raw",
+                  "description": "Output format (defaults to raw to avoid CORS issues):\n- `raw` - Redirect to IPFS (fastest, default)\n- `json` - JSON API response with metadata\n- `myst` - MyST Markdown format (for rendering)\n- `jsonld` - JSON-LD structured data (for semantic web)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "jsonld",
+                  "value": "<boolean>",
+                  "description": "⚠️ Deprecated: Use format=jsonld instead"
+                },
+                {
+                  "disabled": false,
+                  "key": "raw",
+                  "value": "<boolean>",
+                  "description": "Deprecated. Use format=raw instead"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8196403d-da36-4425-a2fc-3302129f564a",
+              "name": "Successfully resolved path",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "jsonld",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": \"CAE\",\n  \"Links\": [\n    {\n      \"Hash\": \"bafybeidyjujorntbtjvtxjqylwuwn65xxo6xkifjigg7yby42fcgitjyvq\",\n      \"Name\": \"manuscript.pdf\",\n      \"Tsize\": 2949059\n    },\n    {\n      \"Hash\": \"bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi\",\n      \"Name\": \"data.csv\",\n      \"Tsize\": 1024\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63a3f298-2196-412c-885b-4ed08ad04a35",
+              "name": "Redirect to IPFS gateway (when format=raw)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "jsonld",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "IPFS gateway URL for direct file access",
+                  "key": "Location",
+                  "value": "https://ipfs.desci.com/ipfs/bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b312baa-5ab2-431c-804e-0c04112e4d31",
+              "name": "Invalid dpid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "jsonld",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bda3be77-7ea7-49eb-b6c3-08cf364f46ea",
+              "name": "Path not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "resolve",
+                    ":path"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "raw"
+                    },
+                    {
+                      "key": "jsonld",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "raw",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"dPID not found\",\n  \"details\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"The requested dPID does not exist\"\n  },\n  \"params\": {\n    \"dpid\": \"123\",\n    \"versionIx\": \"1\"\n  },\n  \"path\": \"/v2/resolve/dpid/123/1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b43374b3-d0f5-474b-8f92-9d8fec17fe9c",
+    "name": "dPID Resolver Data Resolve API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.\n\nThis API provides comprehensive endpoints to resolve dPIDs (decentralized Persistent Identifiers) to their corresponding manifests, content, and metadata. It powers both browse and detail page experiences for the decentralized research ecosystem.\n\n## Key Use Cases\n\n### Browse Pages\n- **/api/v2/query/dpids** - Paginated lists of all research objects with optional metadata\n- **Filter & sort** - Find research by recency, metadata fields, version activity  \n- **Performance optimized** - Smart caching and optional metadata resolution\n\n### Detail Pages\n- **/api/v2/resolve/dpid/{id}** - Complete research object with full version history\n- **/api/v2/resolve/{path}** - Flexible access to specific files and versions\n- **Multi-format support** - JSON, raw IPFS, MyST, JSON-LD outputs\n\n### Direct Access\n- **User-friendly URLs** - Handle dpid.org/123 style links\n- **Version navigation** - Access any historical version (v1, v2, etc.)\n- **File-level access** - Direct links to papers, data, code within research objects\n\n## Features\n- **Fast Resolution**: Resolve dPIDs to manifests and content with sub-second response times\n- **Version History**: Complete chronological access to all research object versions\n- **Metadata Enrichment**: Optional IPFS manifest resolution for titles, authors, descriptions\n- **Flexible Formats**: JSON APIs, raw IPFS redirects, MyST Markdown, JSON-LD semantic data\n- **Pagination**: Efficient browsing through large research collections\n- **Smart Caching**: Redis-backed performance optimization\n- **Cross-Protocol**: Works with both Ceramic streams and legacy blockchain contracts\n\n## Common Integration Patterns\n\n**Research Discovery Platform:**\nGET /api/v2/query/dpids?metadata=true&fields=title,authors&size=20\n\n**Research Detail View:**\nGET /api/v2/resolve/dpid/123\nGET /api/v2/resolve/123/manuscript.pdf?format=raw\n\n**Analytics Dashboard:**\nGET /api/v2/query/dpids?history=true&size=100\n\n## Authentication\nThis API is currently public and does not require authentication.\n\n## Rate Limiting\nPlease be mindful of API usage. Rate limits may be applied to prevent abuse.\n\n## Support\nQuestions? Check our GitHub Issues or contact support.\n\nContact Support:\n Name: API Support\n Email: support@desci.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -11,7 +11,8 @@ server:
   install:
     claude_cli: claude mcp add --transport http sciweave https://mcp.sciweave.com/mcp
     claude_ai: Settings -> Connectors -> Add custom connector with URL + API key
-  description: Claude connector for research paper search and AI-powered answers grounded in SciWeave's index of 300M+ scientific works; all tools are read-only and return verifiable DOIs.
+  description: Claude connector for research paper search and AI-powered answers grounded in SciWeave's
+    index of 300M+ scientific works; all tools are read-only and return verifiable DOIs.
 tools:
 - name: ask_research_question
   description: AI answer with inline citations grounded in SciWeave's index, with year filtering.
@@ -25,3 +26,10 @@ tools:
   description: Retrieve papers within a specific collection.
 - name: get_account_status
   description: Check remaining credits and account information.
+deployment:
+  mode: remote
+  endpoint: https://mcp.sciweave.com/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census

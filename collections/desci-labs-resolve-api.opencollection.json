@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "dPID Resolver Data Resolve API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resolve",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Resolve DPID to full research object history and metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/resolve/dpid/:dpid/:versionIx",
+            "params": [
+              {
+                "name": "dpid",
+                "value": "123",
+                "type": "path",
+                "description": "The DPID number to resolve"
+              },
+              {
+                "name": "versionIx",
+                "value": "",
+                "type": "path",
+                "description": "Optional version specifier. Supports:\n- v-prefixed (v1, v2, v3) - 1-based human-readable\n- numeric (0, 1, 2) - 0-based index\n- omit for latest version\n"
+              }
+            ]
+          },
+          "docs": "**Primary endpoint for DPID detail pages**. Resolves a DPID to its complete research object\ninformation including version history, metadata, and manifest details.\n\n## Key Features\n- **Complete History**: Returns all versions with timestamps and manifests\n- **Version Selection**: Optionally specify a version (v1, v2, etc. or 0-based index)\n- **Stream Integration**: Works with both Ceramic streams and legacy DPIDs\n- **Metadata Rich**: Includes owner, timestamps, and version progression\n\n## Common "
+        },
+        {
+          "info": {
+            "name": "Resolve streamId to manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/resolve/codex/:streamOrCommitId/:versionIx",
+            "params": [
+              {
+                "name": "streamOrCommitId",
+                "value": "",
+                "type": "path",
+                "description": "The stream or commit ID to resolve"
+              },
+              {
+                "name": "versionIx",
+                "value": "",
+                "type": "path",
+                "description": "Optional version index"
+              }
+            ]
+          },
+          "docs": "Resolve streamId to manifest"
+        },
+        {
+          "info": {
+            "name": "Universal DPID resolver with flexible path and format support",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/resolve/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "Flexible path supporting multiple formats:\n- `{dpid}` - DPID number (e.g., 123)\n- `{dpid}/v{n}` - Specific version (e.g., 123/v2)\n- `{dpid}/{index}` - Zero-based version (e.g., 123/1)\n- `{dpid}/root` - Browse root directory (file listing)\n- `{dpid}/root/{filename}` - Access file via root path\n- `{dpid}/v{n}/root` - Browse root of specific version\n- `{dpid}/path/to/file` - File within research object\n- `{dpid}/v{n}/path/to/file` - File in specific version\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Output format (defaults to raw to avoid CORS issues):\n- `raw` - Redirect to IPFS (fastest, default)\n- `json` - JSON API response with metadata\n- `myst` - MyST Markdown format (for rendering)\n- `jsonld` - JSON-LD structured data (for semantic web)\n"
+              },
+              {
+                "name": "jsonld",
+                "value": "",
+                "type": "query",
+                "description": "⚠️ Deprecated: Use format=jsonld instead"
+              },
+              {
+                "name": "raw",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. Use format=raw instead"
+              }
+            ]
+          },
+          "docs": "**Universal resolver for all DPID access patterns**. This endpoint handles the most\nflexible resolution patterns and is ideal for:\n- **Direct DPID links**: Handle user-facing URLs like dpid.org/123\n- **File access**: Access specific files within research objects\n- **Format conversion**: Get content in different formats (raw, MyST, JSON-LD)\n- **Version browsing**: Access any version of any DPID with intuitive URLs\n\n## Path Format\n```\n/{dpid}[/version][/path/to/file][?format=raw|myst|jsonld]\n```\n\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "dPID Resolver Data Query API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query for all research objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/query/objects"
+          },
+          "docs": "Query for all research objects"
+        },
+        {
+          "info": {
+            "name": "Query for the history of a single research object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/query/history/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+              }
+            ]
+          },
+          "docs": "Query the version history of a single research object using either:\n- dPID (e.g. 46)\n- stream ID (e.g. kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682)\n"
+        },
+        {
+          "info": {
+            "name": "Query for the history of multiple research objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v2/query/history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query the version history of multiple research objects using a list of IDs.\nEach ID can be either a dPID or stream ID.\n"
+        },
+        {
+          "info": {
+            "name": "List all DPIDs with pagination, version history, and metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/query/dpids",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (1-based)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of DPIDs per page (max 100)"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by DPID number (desc = newest first)"
+              },
+              {
+                "name": "history",
+                "value": "true",
+                "type": "query",
+                "description": "Include complete version history for each DPID"
+              },
+              {
+                "name": "metadata",
+                "value": "true",
+                "type": "query",
+                "description": "Resolve IPFS manifest metadata (authors, title, etc.)"
+              },
+              {
+                "name": "fields",
+                "value": "title,authors,description",
+                "type": "query",
+                "description": "Comma-separated metadata fields to include when metadata=true.\nAvailable: title, authors, description, keywords, license\n"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of all DPIDs in the system. This endpoint is ideal for:\n- **Browse pages**: Get overview of all research objects with optional metadata\n- **Search implementations**: Paginate through DPIDs with filtering\n- **Analytics**: Understand publication patterns and volume\n\n## Key Features\n- **Pagination**: Navigate through large DPID collections efficiently\n- **Optional History**: Include complete version history per DPID (`history=true`)\n- **Optional Metadata**: Resolve manifes"
+        },
+        {
+          "info": {
+            "name": "Query for research objects by owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/query/owner/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "0x90b2c654f18e491a566d6a38c491cf82745e5987",
+                "type": "path",
+                "description": "Owner address or DID to filter by.\nExamples:\n- Plain address: 0x90b2c654f18e491a566d6a38c491cf82745e5987\n- Full DID: did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\n"
+              }
+            ]
+          },
+          "docs": "Retrieve all research objects owned by a specific address. This endpoint:\n- Fetches all research objects from the system\n- Filters them by the specified owner address\n- Supports both full DID format and plain address format\n\n## Owner ID Format\nThe owner ID can be provided in two formats:\n- **Plain address**: `0x90b2c654f18e491a566d6a38c491cf82745e5987`\n- **Full DID**: `did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987`\n\nThe endpoint will match both formats automatically.\n\n## Use Cas"
+        },
+        {
+          "info": {
+            "name": "Reverse lookup - find DPID by stream ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v2/query/reverse/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682",
+                "type": "path",
+                "description": "The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+              }
+            ]
+          },
+          "docs": "Perform a reverse lookup to find the DPID associated with a given stream ID.\nThis is useful when you have a Ceramic stream ID and need to find its corresponding DPID.\n\n## How It Works\nThe endpoint searches through all registered DPIDs to find which one maps to the\nprovided stream ID. Results are cached for improved performance on subsequent lookups.\n\n## Use Cases\n- **External integrations**: Map Ceramic stream IDs back to DPIDs\n- **Data reconciliation**: Verify DPID-to-stream mappings\n- **Cross-"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

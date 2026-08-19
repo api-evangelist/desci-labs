@@ -1,0 +1,579 @@
+{
+  "item": [
+    {
+      "id": "20dfa342-017a-4679-8153-9865d337b427",
+      "name": "Data",
+      "description": {
+        "content": "**Data utilities** - IPFS-related utilities like folder tree listing by dPID or CID. Useful for directory browsing UIs and content explorers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b11862a5-6eb7-4abf-9ffe-cb13de7fab74",
+          "name": "Get IPFS folder tree for the research object's root by dPID",
+          "request": {
+            "name": "Get IPFS folder tree for the research object's root by dPID",
+            "description": {
+              "content": "Resolves the given dPID to its manifest and returns the directory tree for the `root` component's CID.\nUse `depth` to limit recursion for performance; use `full` for complete traversal.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "data",
+                "dpid",
+                ":dpid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Specific version index (e.g., `v3` or `2`) to resolve before reading the root CID"
+                },
+                {
+                  "disabled": false,
+                  "key": "concurrency",
+                  "value": "8",
+                  "description": "Maximum number of concurrent DAG fetches"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<string>",
+                  "description": "Maximum directory depth to traverse. Use `full` for complete traversal, or a number (0=root only)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dpid",
+                  "description": "(Required) The dPID identifier (numeric)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba485879-9182-45a8-984a-41d1b51f32a5",
+              "name": "Folder tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "dpid",
+                    ":dpid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "v3"
+                    },
+                    {
+                      "key": "concurrency",
+                      "value": "8"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The dPID identifier (numeric)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"cid\": \"string\",\n  \"type\": \"file\",\n  \"size\": 6777,\n  \"children\": [\n    {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"cid\": \"string\",\n      \"type\": \"file\",\n      \"size\": 1466,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"cid\": \"string\",\n      \"type\": \"directory\",\n      \"size\": 8004,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28456f10-c37f-4398-89f0-2033c7e23db3",
+              "name": "Invalid dpid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "dpid",
+                    ":dpid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "v3"
+                    },
+                    {
+                      "key": "concurrency",
+                      "value": "8"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The dPID identifier (numeric)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c69616ff-9079-4da8-8b66-29aac711aec5",
+              "name": "Failed to build folder tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "dpid",
+                    ":dpid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "v3"
+                    },
+                    {
+                      "key": "concurrency",
+                      "value": "8"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The dPID identifier (numeric)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d16a8a3f-52fa-4930-bdbe-e9015265a4cf",
+          "name": "Get IPFS folder tree by root CID",
+          "request": {
+            "name": "Get IPFS folder tree by root CID",
+            "description": {
+              "content": "Returns the directory tree for a given UnixFS root CID. Use `depth` to limit recursion for performance; use `full` for a complete traversal.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "data",
+                "cid",
+                ":cid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rootName",
+                  "value": "root",
+                  "description": "Custom root label in the returned tree"
+                },
+                {
+                  "disabled": false,
+                  "key": "concurrency",
+                  "value": "8",
+                  "description": "Maximum number of concurrent DAG fetches"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<string>",
+                  "description": "Maximum directory depth to traverse. Use `full` for complete traversal, or a number (0=root only)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cid",
+                  "description": "(Required) Root CID of a UnixFS directory or file"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3eb4983-491e-47e7-855a-4df5dbf950c6",
+              "name": "Folder tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "cid",
+                    ":cid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rootName",
+                      "value": "root"
+                    },
+                    {
+                      "key": "concurrency",
+                      "value": "8"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cid",
+                      "description": "(Required) Root CID of a UnixFS directory or file"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"cid\": \"string\",\n  \"type\": \"file\",\n  \"size\": 6148,\n  \"children\": [\n    {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"cid\": \"string\",\n      \"type\": \"directory\",\n      \"size\": 7868,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"cid\": \"string\",\n      \"type\": \"directory\",\n      \"size\": 5639,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/IpfsEntry detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b94573e5-f405-48de-9d79-b3481efd1bdf",
+              "name": "Failed to build folder tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "cid",
+                    ":cid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rootName",
+                      "value": "root"
+                    },
+                    {
+                      "key": "concurrency",
+                      "value": "8"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cid",
+                      "description": "(Required) Root CID of a UnixFS directory or file"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15a869b6-9b96-4a27-84a6-f4de2e439e41",
+          "name": "Get IPFS folder tree for a specific path within a dPID",
+          "request": {
+            "name": "Get IPFS folder tree for a specific path within a dPID",
+            "description": {
+              "content": "Resolves the given dPID and navigates to a specific path within the root component.\nFor example: /v2/data/dpid/827/root/code will return just the 'code' directory.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "data",
+                "dpid",
+                ":dpid",
+                "*"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<string>",
+                  "description": "Maximum directory depth to traverse"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dpid",
+                  "description": "(Required) The dPID identifier followed by the path (e.g., 827/root/code)"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c2f473f-e7f1-46c4-ba57-9ad886cc30e0",
+              "name": "Folder tree at the specified path",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "dpid",
+                    ":dpid",
+                    "*"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The dPID identifier followed by the path (e.g., 827/root/code)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39cb20cd-6ac6-4a8e-af8a-396fc1b2720a",
+              "name": "Path not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "data",
+                    "dpid",
+                    ":dpid",
+                    "*"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "depth",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dpid",
+                      "description": "(Required) The dPID identifier followed by the path (e.g., 827/root/code)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a58542c-098a-4493-abd3-3920d6b71bb4",
+    "name": "dPID Resolver Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.\n\nThis API provides comprehensive endpoints to resolve dPIDs (decentralized Persistent Identifiers) to their corresponding manifests, content, and metadata. It powers both browse and detail page experiences for the decentralized research ecosystem.\n\n## Key Use Cases\n\n### Browse Pages\n- **/api/v2/query/dpids** - Paginated lists of all research objects with optional metadata\n- **Filter & sort** - Find research by recency, metadata fields, version activity  \n- **Performance optimized** - Smart caching and optional metadata resolution\n\n### Detail Pages\n- **/api/v2/resolve/dpid/{id}** - Complete research object with full version history\n- **/api/v2/resolve/{path}** - Flexible access to specific files and versions\n- **Multi-format support** - JSON, raw IPFS, MyST, JSON-LD outputs\n\n### Direct Access\n- **User-friendly URLs** - Handle dpid.org/123 style links\n- **Version navigation** - Access any historical version (v1, v2, etc.)\n- **File-level access** - Direct links to papers, data, code within research objects\n\n## Features\n- **Fast Resolution**: Resolve dPIDs to manifests and content with sub-second response times\n- **Version History**: Complete chronological access to all research object versions\n- **Metadata Enrichment**: Optional IPFS manifest resolution for titles, authors, descriptions\n- **Flexible Formats**: JSON APIs, raw IPFS redirects, MyST Markdown, JSON-LD semantic data\n- **Pagination**: Efficient browsing through large research collections\n- **Smart Caching**: Redis-backed performance optimization\n- **Cross-Protocol**: Works with both Ceramic streams and legacy blockchain contracts\n\n## Common Integration Patterns\n\n**Research Discovery Platform:**\nGET /api/v2/query/dpids?metadata=true&fields=title,authors&size=20\n\n**Research Detail View:**\nGET /api/v2/resolve/dpid/123\nGET /api/v2/resolve/123/manuscript.pdf?format=raw\n\n**Analytics Dashboard:**\nGET /api/v2/query/dpids?history=true&size=100\n\n## Authentication\nThis API is currently public and does not require authentication.\n\n## Rate Limiting\nPlease be mindful of API usage. Rate limits may be applied to prevent abuse.\n\n## Support\nQuestions? Check our GitHub Issues or contact support.\n\nContact Support:\n Name: API Support\n Email: support@desci.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1274 @@
+{
+  "item": [
+    {
+      "id": "f0085c58-6840-4d67-b2d8-73ffcfa4ec4e",
+      "name": "Query",
+      "description": {
+        "content": "**Research discovery and browse functionality** - Ideal for browse pages, search, and analytics. Paginated lists of research objects with optional metadata resolution, version history, and filtering capabilities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a496e776-3daf-4873-94fa-e2c4663ab063",
+          "name": "Query for all research objects",
+          "request": {
+            "name": "Query for all research objects",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "objects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8b11802-2a1c-448b-b899-d46df3b36d28",
+              "name": "List of research objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"owner\": \"string\",\n    \"manifest\": \"string\",\n    \"title\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"owner\": \"string\",\n    \"manifest\": \"string\",\n    \"title\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "677ca741-4bd3-4b68-85e1-5cb73d06d42a",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "objects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9979d5a3-e6d0-4a7a-b759-41fb32e9e881",
+          "name": "Query for the history of a single research object",
+          "request": {
+            "name": "Query for the history of a single research object",
+            "description": {
+              "content": "Query the version history of a single research object using either:\n- dPID (e.g. 46)\n- stream ID (e.g. kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "history",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f5b7a92-7cd9-46d9-8a23-e3cc0c866823",
+              "name": "Research object history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"owner\": \"string\",\n  \"manifest\": \"string\",\n  \"versions\": [\n    {\n      \"version\": \"string\",\n      \"manifest\": \"string\",\n      \"timestamp\": \"1952-10-22T14:47:18.819Z\"\n    },\n    {\n      \"version\": \"string\",\n      \"manifest\": \"string\",\n      \"timestamp\": \"1986-08-14T21:47:06.014Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcb0ced3-d1ce-4558-a6a9-17ae28fdf5b1",
+              "name": "Invalid dPID or stream ID format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3842711a-406b-4a73-9c70-ff4b7571710f",
+              "name": "dPID or stream not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fea79939-a180-46b6-8d9f-9f3f616473ca",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Either a dPID or stream ID to query.\nExamples:\n- dPID: 46\n- stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ab7a1ba-9ae6-411d-baae-a0f7eebe6aad",
+          "name": "Query for the history of multiple research objects",
+          "request": {
+            "name": "Query for the history of multiple research objects",
+            "description": {
+              "content": "Query the version history of multiple research objects using a list of IDs.\nEach ID can be either a dPID or stream ID.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e27ac88b-88bb-4cca-ad0e-112cc1f3d290",
+              "name": "Array of research object histories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"46\",\n    \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"owner\": \"string\",\n    \"manifest\": \"string\",\n    \"versions\": [\n      {\n        \"version\": \"string\",\n        \"manifest\": \"string\",\n        \"timestamp\": \"2013-10-30T20:40:09.441Z\"\n      },\n      {\n        \"version\": \"string\",\n        \"manifest\": \"string\",\n        \"timestamp\": \"1999-04-04T15:13:30.886Z\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"owner\": \"string\",\n    \"manifest\": \"string\",\n    \"versions\": [\n      {\n        \"version\": \"string\",\n        \"manifest\": \"string\",\n        \"timestamp\": \"1961-05-24T06:37:55.270Z\"\n      },\n      {\n        \"version\": \"string\",\n        \"manifest\": \"string\",\n        \"timestamp\": \"1989-09-17T08:58:12.632Z\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0e2c394-da23-4f93-b582-5a3b9749129e",
+              "name": "Invalid request body or ID format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"46\",\n    \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81c59220-6c88-475c-88ee-0200f94c81c0",
+              "name": "One or more objects not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"46\",\n    \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb08c9a-8797-4dc9-b610-b27b6d3a5952",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"46\",\n    \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0bd0b3d-e079-41ec-bc0c-880c92264653",
+          "name": "List all DPIDs with pagination, version history, and metadata",
+          "request": {
+            "name": "List all DPIDs with pagination, version history, and metadata",
+            "description": {
+              "content": "Retrieve a paginated list of all DPIDs in the system. This endpoint is ideal for:\n- **Browse pages**: Get overview of all research objects with optional metadata\n- **Search implementations**: Paginate through DPIDs with filtering\n- **Analytics**: Understand publication patterns and volume\n\n## Key Features\n- **Pagination**: Navigate through large DPID collections efficiently\n- **Optional History**: Include complete version history per DPID (`history=true`)\n- **Optional Metadata**: Resolve manifest metadata like titles, authors (`metadata=true`)\n- **Field Selection**: Choose specific metadata fields (`fields=title,authors`)\n- **Sorting**: Control order with `sort=asc|desc` (newest first by default)\n- **Smart Links**: Self-documenting pagination URLs for discovery\n\n## Common Usage Patterns\n\n**Browse Page (Basic)**:\n```\nGET /v2/query/dpids?page=1&size=20&metadata=true&fields=title,authors\n```\n\n**Browse Page (with History)**:\n```\nGET /v2/query/dpids?page=1&size=10&history=true&metadata=true\n```\n\n**Analytics/Stats**:\n```\nGET /v2/query/dpids?page=1&size=100&sort=asc\n```\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "dpids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Number of DPIDs per page (max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "Sort order by DPID number (desc = newest first)"
+                },
+                {
+                  "disabled": false,
+                  "key": "history",
+                  "value": "false",
+                  "description": "Include complete version history for each DPID"
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "false",
+                  "description": "Resolve IPFS manifest metadata (authors, title, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "title,authors",
+                  "description": "Comma-separated metadata fields to include when metadata=true.\nAvailable: title, authors, description, keywords, license\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a99db375-f015-4d5d-ae61-1c655cca4c23",
+              "name": "Paginated list of DPIDs with optional history and metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "dpids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "title,authors,description"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dpids\": [\n    {\n      \"dpid\": 557,\n      \"owner\": \"0x1234567890abcdef1234567890abcdef12345678\",\n      \"latestCid\": \"bafkreiasyoawbtjotfckd7yi33t4rxidiqusrwj6g2hb2gsczw35nlt4we\",\n      \"versionCount\": 1,\n      \"source\": \"ceramic\",\n      \"links\": {\n        \"history\": \"http://localhost:5461/api/v2/query/history/557\",\n        \"latest\": \"http://localhost:5461/api/v2/resolve/dpid/557\",\n        \"raw\": \"http://localhost:5461/557?raw\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 1,\n    \"total\": 557,\n    \"hasNext\": true,\n    \"hasPrev\": false,\n    \"links\": {\n      \"self\": \"http://localhost:5461/api/v2/query/dpids?page=1&size=1\",\n      \"first\": \"http://localhost:5461/api/v2/query/dpids?page=1&size=1\",\n      \"next\": \"http://localhost:5461/api/v2/query/dpids?page=2&size=1\",\n      \"last\": \"http://localhost:5461/api/v2/query/dpids?page=557&size=1\",\n      \"withHistory\": \"http://localhost:5461/api/v2/query/dpids?page=1&size=1&history=true\",\n      \"withMetadata\": \"http://localhost:5461/api/v2/query/dpids?page=1&size=1&metadata=true&fields=title,authors\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ffa8cf1-448c-4ab2-b005-ac46140b2fd0",
+              "name": "Invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "dpids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "title,authors,description"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid page parameter\",\n  \"details\": \"Page must be a positive integer\",\n  \"params\": {\n    \"page\": \"0\",\n    \"size\": \"20\"\n  },\n  \"path\": \"/api/v2/query/dpids\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23297d27-91f6-498d-a2c0-e823a3a383aa",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "dpids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "history",
+                      "value": "true"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "title,authors,description"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb0d1f8c-b105-4cf6-9af1-b76c333f7cbb",
+          "name": "Query for research objects by owner",
+          "request": {
+            "name": "Query for research objects by owner",
+            "description": {
+              "content": "Retrieve all research objects owned by a specific address. This endpoint:\n- Fetches all research objects from the system\n- Filters them by the specified owner address\n- Supports both full DID format and plain address format\n\n## Owner ID Format\nThe owner ID can be provided in two formats:\n- **Plain address**: `0x90b2c654f18e491a566d6a38c491cf82745e5987`\n- **Full DID**: `did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987`\n\nThe endpoint will match both formats automatically.\n\n## Use Cases\n- **User dashboards**: Display all research objects for a specific researcher\n- **Profile pages**: Show publication history for an address\n- **Analytics**: Track research output by author/institution\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "owner",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Owner address or DID to filter by.\nExamples:\n- Plain address: 0x90b2c654f18e491a566d6a38c491cf82745e5987\n- Full DID: did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93151810-a4ad-4eed-a077-25b91b714c00",
+              "name": "List of research objects owned by the specified address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "owner",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Owner address or DID to filter by.\nExamples:\n- Plain address: 0x90b2c654f18e491a566d6a38c491cf82745e5987\n- Full DID: did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\",\n    \"owner\": \"did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\",\n    \"manifest\": \"bafkreiasyoawbtjotfckd7yi33t4rxidiqusrwj6g2hb2gsczw35nlt4we\",\n    \"title\": \"Research Object Title\"\n  },\n  {\n    \"id\": \"kjzl6kcym7w8y8zxcv9io123nmzrprs5ndmcqtugbtnd27kko22fuyev08r9876\",\n    \"owner\": \"did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\",\n    \"manifest\": \"bafkreidfg3awbtjotfckd7yi33t4rxidiqusrwj6g2hb2gsczw35nlt5ab\",\n    \"title\": \"Another Research Object\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fdf9732-b5bc-4347-93c7-2e5c498f7f0f",
+              "name": "Invalid request - missing owner ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "owner",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Owner address or DID to filter by.\nExamples:\n- Plain address: 0x90b2c654f18e491a566d6a38c491cf82745e5987\n- Full DID: did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid request\",\n  \"details\": \"missing owner id in path parameter\",\n  \"params\": {},\n  \"path\": \"api/v2/queries/owner\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7486bcab-2ab2-41da-b7b1-fdc44fd69806",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "owner",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Owner address or DID to filter by.\nExamples:\n- Plain address: 0x90b2c654f18e491a566d6a38c491cf82745e5987\n- Full DID: did:pkh:eip155:1337:0x90b2c654f18e491a566d6a38c491cf82745e5987\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"failed to fetch research objects\",\n  \"details\": \"flight client error\",\n  \"params\": {\n    \"id\": \"0x90b2c654f18e491a566d6a38c491cf82745e5987\"\n  },\n  \"path\": \"api/v2/queries/owner\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c43fe64-551a-41bc-b446-e6bb53fe3540",
+          "name": "Reverse lookup - find DPID by stream ID",
+          "request": {
+            "name": "Reverse lookup - find DPID by stream ID",
+            "description": {
+              "content": "Perform a reverse lookup to find the DPID associated with a given stream ID.\nThis is useful when you have a Ceramic stream ID and need to find its corresponding DPID.\n\n## How It Works\nThe endpoint searches through all registered DPIDs to find which one maps to the\nprovided stream ID. Results are cached for improved performance on subsequent lookups.\n\n## Use Cases\n- **External integrations**: Map Ceramic stream IDs back to DPIDs\n- **Data reconciliation**: Verify DPID-to-stream mappings\n- **Cross-referencing**: Find DPID when only stream ID is known\n\nSubsequent lookups for the same stream ID are served from cache.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "query",
+                "reverse",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af53c7cc-15b9-478f-aba3-33fcec5c0783",
+              "name": "DPID found for the provided stream ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "reverse",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dpid\": 46,\n  \"streamId\": \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\",\n  \"links\": {\n    \"resolve\": \"http://localhost:5461/api/v2/resolve/dpid/46\",\n    \"history\": \"http://localhost:5461/api/v2/query/history/46\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dce91554-9234-4587-8639-4f9af777cf64",
+              "name": "Invalid request - missing stream ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "reverse",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid request\",\n  \"details\": \"missing stream ID in path parameter\",\n  \"params\": {},\n  \"path\": \"api/v2/queries/reverseLookup\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a44577f4-6b67-4057-a8ee-24608a40ff06",
+              "name": "No DPID found for the provided stream ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "reverse",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not found\",\n  \"details\": \"no DPID found for stream ID: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\",\n  \"params\": {\n    \"id\": \"kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\"\n  },\n  \"path\": \"api/v2/queries/reverseLookup\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbdd038d-d997-44f6-942f-9785b4be6dc3",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "query",
+                    "reverse",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Ceramic stream ID to look up.\nExample: kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": {},\n  \"params\": {},\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a4a6e70-f614-4502-adda-7a111f12fe10",
+    "name": "dPID Resolver Data Query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.\n\nThis API provides comprehensive endpoints to resolve dPIDs (decentralized Persistent Identifiers) to their corresponding manifests, content, and metadata. It powers both browse and detail page experiences for the decentralized research ecosystem.\n\n## Key Use Cases\n\n### Browse Pages\n- **/api/v2/query/dpids** - Paginated lists of all research objects with optional metadata\n- **Filter & sort** - Find research by recency, metadata fields, version activity  \n- **Performance optimized** - Smart caching and optional metadata resolution\n\n### Detail Pages\n- **/api/v2/resolve/dpid/{id}** - Complete research object with full version history\n- **/api/v2/resolve/{path}** - Flexible access to specific files and versions\n- **Multi-format support** - JSON, raw IPFS, MyST, JSON-LD outputs\n\n### Direct Access\n- **User-friendly URLs** - Handle dpid.org/123 style links\n- **Version navigation** - Access any historical version (v1, v2, etc.)\n- **File-level access** - Direct links to papers, data, code within research objects\n\n## Features\n- **Fast Resolution**: Resolve dPIDs to manifests and content with sub-second response times\n- **Version History**: Complete chronological access to all research object versions\n- **Metadata Enrichment**: Optional IPFS manifest resolution for titles, authors, descriptions\n- **Flexible Formats**: JSON APIs, raw IPFS redirects, MyST Markdown, JSON-LD semantic data\n- **Pagination**: Efficient browsing through large research collections\n- **Smart Caching**: Redis-backed performance optimization\n- **Cross-Protocol**: Works with both Ceramic streams and legacy blockchain contracts\n\n## Common Integration Patterns\n\n**Research Discovery Platform:**\nGET /api/v2/query/dpids?metadata=true&fields=title,authors&size=20\n\n**Research Detail View:**\nGET /api/v2/resolve/dpid/123\nGET /api/v2/resolve/123/manuscript.pdf?format=raw\n\n**Analytics Dashboard:**\nGET /api/v2/query/dpids?history=true&size=100\n\n## Authentication\nThis API is currently public and does not require authentication.\n\n## Rate Limiting\nPlease be mindful of API usage. Rate limits may be applied to prevent abuse.\n\n## Support\nQuestions? Check our GitHub Issues or contact support.\n\nContact Support:\n Name: API Support\n Email: support@desci.com",
+      "type": "text/plain"
+    }
+  }
+}
