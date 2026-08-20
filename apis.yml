@@ -42,6 +42,17 @@ tags:
 - Open Access
 - AI Research Tools
 - IPFS
+- MCP
+tags_raw:
+- Company
+- Ai Enterprise Software
+- Research Infrastructure
+- Decentralized Science
+- Scholarly Communication
+- Persistent Identifiers
+- Open Access
+- AI Research Tools
+- IPFS
 - Model Context Protocol
 apis:
 - aid: desci-labs:desci-labs-data-api
