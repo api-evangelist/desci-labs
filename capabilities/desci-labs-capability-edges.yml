@@ -1,0 +1,38 @@
+slug: desci-labs
+provider: DeSci Labs
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Resolve
+  spec_file: desci-labs-resolve-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.75
+  evidence: GET /v2/resolve/dpid/{dpid}/{versionIx} "Resolve DPID to full research object history and
+    metadata"
+  reason: Resolution of decentralized persistent identifiers to research object manifests and metadata
+    maps to stewardship of scholarly output including persistent identifiers. Vendor is a scholarly publishing/preprint
+    infrastructure provider, so the scholarly-output reading is the honest one.
+- tag: Query
+  spec_file: desci-labs-query-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.72
+  evidence: GET /v2/query/objects "Query for all research objects"; GET /v2/query/dpids "List all DPIDs
+    with pagination, version history, and metadata"
+  reason: 'Surface catalogues and queries research objects and their persistent identifiers (dPIDs) with
+    version history and manifest metadata — tracking of scholarly output and persistent identifiers. Not
+    a generic search tag: the schemas (ResearchObject, ResearchObjectHistory, ManifestMetadata) are domain
+    objects of scholarly publishing.'
