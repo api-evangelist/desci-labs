@@ -122,6 +122,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Website
+  url: https://www.desci.com/
 - type: CapabilityMap
   url: capabilities/desci-labs-capability-edges.yml
   name: DeSci Labs Business Capability Map
