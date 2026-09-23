@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: dPID Resolver Data Query API
+  title: dPID Resolver Query API
   version: 2.0.0
-  description: "An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.\n\nThis API provides comprehensive endpoints to resolve dPIDs (decentralized Persistent Identifiers) to their corresponding manifests, content, and metadata. It powers both browse and detail page experiences for the decentralized research ecosystem.\n\n## Key Use Cases\n\n### Browse Pages\n- **/api/v2/query/dpids** - Paginated lists of all research objects with optional metadata\n- **Filter & sort** - Find research by recency, metadata fields, version activity  \n- **Performance optimized** - Smart caching and optional metadata resolution\n\n### Detail Pages\n- **/api/v2/resolve/dpid/{id}** - Complete research object with full version history\n- **/api/v2/resolve/{path}** - Flexible access to specific files and versions\n- **Multi-format support** - JSON, raw IPFS, MyST, JSON-LD outputs\n\n### Direct Access\n- **User-friendly URLs** - Handle dpid.org/123 style links\n- **Version navigation** - Access any historical version (v1, v2, etc.)\n- **File-level access** - Direct links to papers, data, code within research objects\n\n## Features\n- **Fast Resolution**: Resolve dPIDs to manifests and content with sub-second response times\n- **Version History**: Complete chronological access to all research object versions\n- **Metadata Enrichment**: Optional IPFS manifest resolution for titles, authors, descriptions\n- **Flexible Formats**: JSON APIs, raw IPFS redirects, MyST Markdown, JSON-LD semantic data\n- **Pagination**: Efficient browsing through large research collections\n- **Smart Caching**: Redis-backed performance optimization\n- **Cross-Protocol**: Works with both Ceramic streams and legacy blockchain contracts\n\n## Common Integration Patterns\n\n**Research Discovery Platform:**\nGET /api/v2/query/dpids?metadata=true&fields=title,authors&size=20\n\n**Research Detail View:**\nGET /api/v2/resolve/dpid/123\nGET /api/v2/resolve/123/manuscript.pdf?format=raw\n\n**Analytics Dashboard:**\nGET /api/v2/query/dpids?history=true&size=100\n\n## Authentication\nThis API is currently public and does not require authentication.\n\n## Rate Limiting\nPlease be mindful of API usage. Rate limits may be applied to prevent abuse.\n\n## Support\nQuestions? Check our GitHub Issues or contact support."
+  description: An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.
   contact:
     name: API Support
     url: https://github.com/desci-labs/dpid-resolver/issues
@@ -43,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResearchObjectQueryError'
+      operationId: getV2QueryObjects
+      x-operation-id-source: derived
   /v2/query/history/{id}:
     get:
       tags:
@@ -52,9 +54,7 @@ paths:
 
         - dPID (e.g. 46)
 
-        - stream ID (e.g. kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682)
-
-        '
+        - stream ID (e.g. kjzl6kcym7w8y92di94io797nmzrprs5ndmcqtugbtnd27kko22fuyev08r4682)'
       parameters:
       - in: path
         name: id
@@ -109,6 +109,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResearchObjectQueryError'
+      operationId: getV2QueryHistoryById
+      x-operation-id-source: derived
   /v2/query/history:
     post:
       tags:
@@ -116,9 +118,7 @@ paths:
       summary: Query for the history of multiple research objects
       description: 'Query the version history of multiple research objects using a list of IDs.
 
-        Each ID can be either a dPID or stream ID.
-
-        '
+        Each ID can be either a dPID or stream ID.'
       requestBody:
         required: true
         content:
@@ -177,6 +177,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResearchObjectQueryError'
+      operationId: postV2QueryHistory
+      x-operation-id-source: derived
   /v2/query/dpids:
     get:
       tags:
@@ -233,9 +235,7 @@ paths:
 
         GET /v2/query/dpids?page=1&size=100&sort=asc
 
-        ```
-
-        '
+        ```'
       parameters:
       - in: query
         name: page
@@ -378,6 +378,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResearchObjectQueryError'
+      operationId: getV2QueryDpids
+      x-operation-id-source: derived
   /v2/query/owner/{id}:
     get:
       tags:
@@ -410,9 +412,7 @@ paths:
 
         - **Profile pages**: Show publication history for an address
 
-        - **Analytics**: Track research output by author/institution
-
-        '
+        - **Analytics**: Track research output by author/institution'
       parameters:
       - in: path
         name: id
@@ -476,6 +476,8 @@ paths:
                 params:
                   id: '0x90b2c654f18e491a566d6a38c491cf82745e5987'
                 path: api/v2/queries/owner
+      operationId: getV2QueryOwnerById
+      x-operation-id-source: derived
   /v2/query/reverse/{id}:
     get:
       tags:
@@ -502,9 +504,7 @@ paths:
         - **Cross-referencing**: Find DPID when only stream ID is known
 
 
-        Subsequent lookups for the same stream ID are served from cache.
-
-        '
+        Subsequent lookups for the same stream ID are served from cache.'
       parameters:
       - in: path
         name: id
@@ -575,70 +575,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResearchObjectQueryError'
+      operationId: getV2QueryReverseById
+      x-operation-id-source: derived
 components:
   schemas:
-    DpidListResponse:
-      type: object
-      properties:
-        dpids:
-          type: array
-          items:
-            $ref: '#/components/schemas/DpidQueryResult'
-          description: Array of DPID results
-        pagination:
-          type: object
-          properties:
-            page:
-              type: integer
-              description: Current page number
-            size:
-              type: integer
-              description: Number of results per page
-            total:
-              type: integer
-              description: Total number of DPIDs
-            hasNext:
-              type: boolean
-              description: Whether there are more pages
-            hasPrev:
-              type: boolean
-              description: Whether there are previous pages
-            links:
-              type: object
-              properties:
-                self:
-                  type: string
-                  description: Current page URL
-                first:
-                  type: string
-                  description: First page URL
-                prev:
-                  type: string
-                  nullable: true
-                  description: Previous page URL
-                next:
-                  type: string
-                  nullable: true
-                  description: Next page URL
-                last:
-                  type: string
-                  description: Last page URL
-                withHistory:
-                  type: string
-                  nullable: true
-                  description: URL with version history included
-                withoutHistory:
-                  type: string
-                  nullable: true
-                  description: URL without version history
-                withMetadata:
-                  type: string
-                  nullable: true
-                  description: URL with manifest metadata included
-                withoutMetadata:
-                  type: string
-                  nullable: true
-                  description: URL without manifest metadata
     DpidQueryResult:
       type: object
       properties:
@@ -680,22 +620,6 @@ components:
             raw:
               type: string
               description: URL to get raw manifest
-    DpidVersion:
-      type: object
-      properties:
-        index:
-          type: integer
-          description: Zero-based version index
-        cid:
-          type: string
-          description: IPFS CID for this version
-        time:
-          type: integer
-          nullable: true
-          description: Unix timestamp of version (null if pending)
-        resolveUrl:
-          type: string
-          description: URL to resolve this specific version
     ResearchObject:
       type: object
       properties:
@@ -711,19 +635,6 @@ components:
         title:
           type: string
           description: Research object title
-    ResearchObjectHistory:
-      type: object
-      properties:
-        version:
-          type: string
-          description: Version identifier
-        manifest:
-          type: string
-          description: Manifest CID for this version
-        timestamp:
-          type: string
-          format: date-time
-          description: Timestamp of version
     ResearchObjectQueryError:
       type: object
       properties:
@@ -739,6 +650,104 @@ components:
         path:
           type: string
           description: API path where error occurred
+    DpidListResponse:
+      type: object
+      properties:
+        dpids:
+          type: array
+          items:
+            $ref: '#/components/schemas/DpidQueryResult'
+          description: Array of DPID results
+        pagination:
+          type: object
+          properties:
+            page:
+              type: integer
+              description: Current page number
+            size:
+              type: integer
+              description: Number of results per page
+            total:
+              type: integer
+              description: Total number of DPIDs
+            hasNext:
+              type: boolean
+              description: Whether there are more pages
+            hasPrev:
+              type: boolean
+              description: Whether there are previous pages
+            links:
+              type: object
+              properties:
+                self:
+                  type: string
+                  description: Current page URL
+                first:
+                  type: string
+                  description: First page URL
+                prev:
+                  type:
+                  - string
+                  - 'null'
+                  description: Previous page URL
+                next:
+                  type:
+                  - string
+                  - 'null'
+                  description: Next page URL
+                last:
+                  type: string
+                  description: Last page URL
+                withHistory:
+                  type:
+                  - string
+                  - 'null'
+                  description: URL with version history included
+                withoutHistory:
+                  type:
+                  - string
+                  - 'null'
+                  description: URL without version history
+                withMetadata:
+                  type:
+                  - string
+                  - 'null'
+                  description: URL with manifest metadata included
+                withoutMetadata:
+                  type:
+                  - string
+                  - 'null'
+                  description: URL without manifest metadata
+    ResearchObjectHistory:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Version identifier
+        manifest:
+          type: string
+          description: Manifest CID for this version
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of version
+    DpidVersion:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Zero-based version index
+        cid:
+          type: string
+          description: IPFS CID for this version
+        time:
+          type:
+          - integer
+          - 'null'
+          description: Unix timestamp of version (null if pending)
+        resolveUrl:
+          type: string
+          description: URL to resolve this specific version
     ManifestMetadata:
       type: object
       properties:

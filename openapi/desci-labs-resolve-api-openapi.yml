@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: dPID Resolver Data Resolve API
+  title: dPID Resolver Resolve API
   version: 2.0.0
-  description: "An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.\n\nThis API provides comprehensive endpoints to resolve dPIDs (decentralized Persistent Identifiers) to their corresponding manifests, content, and metadata. It powers both browse and detail page experiences for the decentralized research ecosystem.\n\n## Key Use Cases\n\n### Browse Pages\n- **/api/v2/query/dpids** - Paginated lists of all research objects with optional metadata\n- **Filter & sort** - Find research by recency, metadata fields, version activity  \n- **Performance optimized** - Smart caching and optional metadata resolution\n\n### Detail Pages\n- **/api/v2/resolve/dpid/{id}** - Complete research object with full version history\n- **/api/v2/resolve/{path}** - Flexible access to specific files and versions\n- **Multi-format support** - JSON, raw IPFS, MyST, JSON-LD outputs\n\n### Direct Access\n- **User-friendly URLs** - Handle dpid.org/123 style links\n- **Version navigation** - Access any historical version (v1, v2, etc.)\n- **File-level access** - Direct links to papers, data, code within research objects\n\n## Features\n- **Fast Resolution**: Resolve dPIDs to manifests and content with sub-second response times\n- **Version History**: Complete chronological access to all research object versions\n- **Metadata Enrichment**: Optional IPFS manifest resolution for titles, authors, descriptions\n- **Flexible Formats**: JSON APIs, raw IPFS redirects, MyST Markdown, JSON-LD semantic data\n- **Pagination**: Efficient browsing through large research collections\n- **Smart Caching**: Redis-backed performance optimization\n- **Cross-Protocol**: Works with both Ceramic streams and legacy blockchain contracts\n\n## Common Integration Patterns\n\n**Research Discovery Platform:**\nGET /api/v2/query/dpids?metadata=true&fields=title,authors&size=20\n\n**Research Detail View:**\nGET /api/v2/resolve/dpid/123\nGET /api/v2/resolve/123/manuscript.pdf?format=raw\n\n**Analytics Dashboard:**\nGET /api/v2/query/dpids?history=true&size=100\n\n## Authentication\nThis API is currently public and does not require authentication.\n\n## Rate Limiting\nPlease be mindful of API usage. Rate limits may be applied to prevent abuse.\n\n## Support\nQuestions? Check our GitHub Issues or contact support."
+  description: An open-source HTTP resolver for dPIDs, bridging decentralized protocols to HTTP for scientific research artifact data.
   contact:
     name: API Support
     url: https://github.com/desci-labs/dpid-resolver/issues
@@ -62,7 +62,7 @@ paths:
 
         GET /v2/resolve/dpid/123/v2
 
-        GET /v2/resolve/dpid/123/1    // 0-based index
+        GET /v2/resolve/dpid/123/1 // 0-based index
 
         ```
 
@@ -71,13 +71,11 @@ paths:
 
         ```
 
-        GET /v2/resolve/dpid/123      // Get all versions
+        GET /v2/resolve/dpid/123 // Get all versions
 
-        GET /v2/resolve/dpid/123/v1   // Get specific version for comparison
+        GET /v2/resolve/dpid/123/v1 // Get specific version for comparison
 
-        ```
-
-        '
+        ```'
       parameters:
       - in: path
         name: dpid
@@ -146,6 +144,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: getV2ResolveDpidByDpidByVersionIx
+      x-operation-id-source: derived
   /v2/resolve/codex/{streamOrCommitId}/{versionIx}:
     get:
       tags:
@@ -184,6 +184,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: getV2ResolveCodexByStreamOrCommitIdByVersionIx
+      x-operation-id-source: derived
   /v2/resolve/{path}:
     get:
       tags:
@@ -218,11 +220,11 @@ paths:
 
         ```
 
-        GET /v2/resolve/123                     # Latest version, raw IPFS redirect (default)
+        GET /v2/resolve/123 # Latest version, raw IPFS redirect (default)
 
-        GET /v2/resolve/123/v2                  # Specific version, raw IPFS redirect
+        GET /v2/resolve/123/v2 # Specific version, raw IPFS redirect
 
-        GET /v2/resolve/123?format=json         # JSON API response with metadata
+        GET /v2/resolve/123?format=json # JSON API response with metadata
 
         ```
 
@@ -234,13 +236,13 @@ paths:
 
         ```
 
-        GET /v2/resolve/123/root                # Browse root directory (file listing)
+        GET /v2/resolve/123/root # Browse root directory (file listing)
 
         GET /v2/resolve/123/root/manuscript.pdf # Access file via root path
 
-        GET /v2/resolve/123/v1/root             # Browse root of specific version
+        GET /v2/resolve/123/v1/root # Browse root of specific version
 
-        GET /v2/resolve/123/data/results.csv    # Access file in subdirectory
+        GET /v2/resolve/123/data/results.csv # Access file in subdirectory
 
         GET /v2/resolve/123/v1/data/results.csv # Access file in specific version
 
@@ -251,13 +253,13 @@ paths:
 
         ```
 
-        GET /v2/resolve/123                               # Redirect to latest manifest (default)
+        GET /v2/resolve/123 # Redirect to latest manifest (default)
 
-        GET /v2/resolve/123/root                          # Browse files via IPFS gateway (default)
+        GET /v2/resolve/123/root # Browse files via IPFS gateway (default)
 
-        GET /v2/resolve/123/root/paper.pdf                # Direct download via IPFS (default)
+        GET /v2/resolve/123/root/paper.pdf # Direct download via IPFS (default)
 
-        GET /v2/resolve/123/v2/root/data.csv              # Version-specific file download (default)
+        GET /v2/resolve/123/v2/root/data.csv # Version-specific file download (default)
 
         ```
 
@@ -266,13 +268,13 @@ paths:
 
         ```
 
-        GET /v2/resolve/123?format=json         # JSON API response with metadata
+        GET /v2/resolve/123?format=json # JSON API response with metadata
 
-        GET /v2/resolve/123?format=jsonld       # Structured metadata (Semantic Web)
+        GET /v2/resolve/123?format=jsonld # Structured metadata (Semantic Web)
 
-        GET /v2/resolve/123?format=myst         # MyST Markdown format
+        GET /v2/resolve/123?format=myst # MyST Markdown format
 
-        GET /v2/resolve/123?format=raw          # Explicit IPFS redirect (same as default)
+        GET /v2/resolve/123?format=raw # Explicit IPFS redirect (same as default)
 
         ```
 
@@ -281,17 +283,15 @@ paths:
 
         ```
 
-        GET /v2/resolve/123/v1/data/            # List files in version 1
+        GET /v2/resolve/123/v1/data/ # List files in version 1
 
-        GET /v2/resolve/123/v2/data/            # List files in version 2
+        GET /v2/resolve/123/v2/data/ # List files in version 2
 
         GET /v2/resolve/123/v1/data/results.csv # Compare specific files
 
         GET /v2/resolve/123/v2/data/results.csv
 
-        ```
-
-        '
+        ```'
       parameters:
       - in: path
         name: path
@@ -440,6 +440,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: getV2ResolveByPath
+      x-operation-id-source: derived
 components:
   schemas:
     ErrorResponse:
