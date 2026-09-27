@@ -579,77 +579,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DpidQueryResult:
-      type: object
-      properties:
-        dpid:
-          type: integer
-          description: DPID number
-        owner:
-          type: string
-          description: Owner DID PKH address
-        latestCid:
-          type: string
-          description: Latest manifest CID
-        versionCount:
-          type: integer
-          description: Total number of versions
-        source:
-          type: string
-          enum:
-          - ceramic
-          - legacy
-          description: Data source type
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DpidVersion'
-          description: Version history (only included when history=true)
-        metadata:
-          $ref: '#/components/schemas/ManifestMetadata'
-          description: Manifest metadata (only included when metadata=true)
-        links:
-          type: object
-          properties:
-            history:
-              type: string
-              description: URL to get full history
-            latest:
-              type: string
-              description: URL to resolve latest version
-            raw:
-              type: string
-              description: URL to get raw manifest
-    ResearchObject:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Stream ID
-        owner:
-          type: string
-          description: Owner DID PKH
-        manifest:
-          type: string
-          description: Manifest CID
-        title:
-          type: string
-          description: Research object title
-    ResearchObjectQueryError:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-        details:
-          type: object
-          description: Detailed error information
-        params:
-          type: object
-          description: Request parameters
-        path:
-          type: string
-          description: API path where error occurred
     DpidListResponse:
       type: object
       properties:
@@ -731,23 +660,21 @@ components:
           type: string
           format: date-time
           description: Timestamp of version
-    DpidVersion:
+    ResearchObjectQueryError:
       type: object
       properties:
-        index:
-          type: integer
-          description: Zero-based version index
-        cid:
+        error:
           type: string
-          description: IPFS CID for this version
-        time:
-          type:
-          - integer
-          - 'null'
-          description: Unix timestamp of version (null if pending)
-        resolveUrl:
+          description: Error message
+        details:
+          type: object
+          description: Detailed error information
+        params:
+          type: object
+          description: Request parameters
+        path:
           type: string
-          description: URL to resolve this specific version
+          description: API path where error occurred
     ManifestMetadata:
       type: object
       properties:
@@ -775,3 +702,76 @@ components:
         license:
           type: string
           description: License information
+    DpidQueryResult:
+      type: object
+      properties:
+        dpid:
+          type: integer
+          description: DPID number
+        owner:
+          type: string
+          description: Owner DID PKH address
+        latestCid:
+          type: string
+          description: Latest manifest CID
+        versionCount:
+          type: integer
+          description: Total number of versions
+        source:
+          type: string
+          enum:
+          - ceramic
+          - legacy
+          description: Data source type
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DpidVersion'
+          description: Version history (only included when history=true)
+        metadata:
+          $ref: '#/components/schemas/ManifestMetadata'
+          description: Manifest metadata (only included when metadata=true)
+        links:
+          type: object
+          properties:
+            history:
+              type: string
+              description: URL to get full history
+            latest:
+              type: string
+              description: URL to resolve latest version
+            raw:
+              type: string
+              description: URL to get raw manifest
+    ResearchObject:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Stream ID
+        owner:
+          type: string
+          description: Owner DID PKH
+        manifest:
+          type: string
+          description: Manifest CID
+        title:
+          type: string
+          description: Research object title
+    DpidVersion:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Zero-based version index
+        cid:
+          type: string
+          description: IPFS CID for this version
+        time:
+          type:
+          - integer
+          - 'null'
+          description: Unix timestamp of version (null if pending)
+        resolveUrl:
+          type: string
+          description: URL to resolve this specific version
