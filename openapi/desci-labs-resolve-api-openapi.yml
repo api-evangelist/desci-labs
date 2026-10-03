@@ -444,38 +444,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: dPID not found
-        details:
-          type: object
-          description: Detailed error information
-          example:
-            code: NOT_FOUND
-            message: The requested dPID does not exist
-        params:
-          type: object
-          description: Request parameters
-          example:
-            dpid: '123'
-            versionIx: '1'
-        path:
-          type: string
-          description: API path where error occurred
-          example: /v2/resolve/dpid/123/1
-      example:
-        error: dPID not found
-        details:
-          code: NOT_FOUND
-          message: The requested dPID does not exist
-        params:
-          dpid: '123'
-          versionIx: '1'
-        path: /v2/resolve/dpid/123/1
     HistoryQueryResult:
       type: object
       properties:
@@ -516,3 +484,35 @@ components:
         - version: k6zn3ty0zptz50xjcqpiayrpowe4gr8f29zkp4up1bj7xg9wk65ea6aln2n8e6kb7hbnbd787v08gqrq3gainac2lg6csr8r8v8c8flc5xszo2kfbtbfzbb
           manifest: bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
           time: 1678901234
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: dPID not found
+        details:
+          type: object
+          description: Detailed error information
+          example:
+            code: NOT_FOUND
+            message: The requested dPID does not exist
+        params:
+          type: object
+          description: Request parameters
+          example:
+            dpid: '123'
+            versionIx: '1'
+        path:
+          type: string
+          description: API path where error occurred
+          example: /v2/resolve/dpid/123/1
+      example:
+        error: dPID not found
+        details:
+          code: NOT_FOUND
+          message: The requested dPID does not exist
+        params:
+          dpid: '123'
+          versionIx: '1'
+        path: /v2/resolve/dpid/123/1
