@@ -579,63 +579,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ManifestMetadata:
+    ResearchObjectHistory:
       type: object
       properties:
-        title:
+        version:
           type: string
-          description: Research object title
-        description:
-          type: string
-          description: Research object description
-        authors:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              orcid:
-                type: string
-          description: Array of authors
-        keywords:
-          type: array
-          items:
-            type: string
-          description: Research keywords/tags
-        license:
-          type: string
-          description: License information
-    ResearchObjectQueryError:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-        details:
-          type: object
-          description: Detailed error information
-        params:
-          type: object
-          description: Request parameters
-        path:
-          type: string
-          description: API path where error occurred
-    ResearchObject:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Stream ID
-        owner:
-          type: string
-          description: Owner DID PKH
+          description: Version identifier
         manifest:
           type: string
-          description: Manifest CID
-        title:
+          description: Manifest CID for this version
+        timestamp:
           type: string
-          description: Research object title
+          format: date-time
+          description: Timestamp of version
     DpidVersion:
       type: object
       properties:
@@ -694,6 +650,36 @@ components:
             raw:
               type: string
               description: URL to get raw manifest
+    ResearchObject:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Stream ID
+        owner:
+          type: string
+          description: Owner DID PKH
+        manifest:
+          type: string
+          description: Manifest CID
+        title:
+          type: string
+          description: Research object title
+    ResearchObjectQueryError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        details:
+          type: object
+          description: Detailed error information
+        params:
+          type: object
+          description: Request parameters
+        path:
+          type: string
+          description: API path where error occurred
     DpidListResponse:
       type: object
       properties:
@@ -762,16 +748,30 @@ components:
                   - string
                   - 'null'
                   description: URL without manifest metadata
-    ResearchObjectHistory:
+    ManifestMetadata:
       type: object
       properties:
-        version:
+        title:
           type: string
-          description: Version identifier
-        manifest:
+          description: Research object title
+        description:
           type: string
-          description: Manifest CID for this version
-        timestamp:
+          description: Research object description
+        authors:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              orcid:
+                type: string
+          description: Array of authors
+        keywords:
+          type: array
+          items:
+            type: string
+          description: Research keywords/tags
+        license:
           type: string
-          format: date-time
-          description: Timestamp of version
+          description: License information
