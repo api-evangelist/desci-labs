@@ -64,6 +64,124 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-DeSci Labs is a company surfaced as a portfolio company of hv-capital and added to the API Evangelist network as a stub for enrichment. Sector: ai-enterprise-software. This profile is a lead awaiting the enrichment pipeline.
+DeSci Labs builds decentralized-science infrastructure for open, verifiable, and AI-native scholarly communication. Its products include DeSci Publish (DeSci Nodes) — a preprint and open-access publishing platform with rapid peer review and versioned, PID-addressed research objects; SciWeave — an AI research-discovery engine over 300M+ scientific works that ships a hosted Model Context Protocol (MCP) server; the DeSci Referee Finder for editorial reviewer matching; and the open-source dPID Resolver, an HTTP API that bridges decentralized persistent identifiers (dPIDs) to IPFS content and the Ceramic network. Developers integrate via the @desci-labs/nodes-lib client library and the public dPID Resolver API. Backed by hv-capital.
 
-Backed by: hv-capital
+**Areas:** Company · Ai Enterprise Software · Research Infrastructure · Decentralized Science · Scholarly Communication · Persistent Identifiers · Open Access · AI Research Tools · IPFS · MCP
+
+## DeSci Labs on APIs.io
+
+Everything profiled for DeSci Labs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/desci-labs/](https://apis.io/providers/desci-labs/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [DeSci Labs Data API](https://apis.io/apis/desci-labs/desci-labs-data-api/) — **Data utilities** - IPFS-related utilities like folder tree listing by dPID or CID. Useful for directory browsing UIs and content explorers.
+- [DeSci Labs Query API](https://apis.io/apis/desci-labs/desci-labs-query-api/) — **Research discovery and browse functionality** - Ideal for browse pages, search, and analytics. Paginated lists of research objects with optional metadata…
+- [DeSci Labs Resolve API](https://apis.io/apis/desci-labs/desci-labs-resolve-api/) — **Individual research object resolution** - Perfect for detail pages, file access, and direct DPID links. Get complete research objects with full version…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [SciWeave MCP Server](https://apis.io/servers/desci-labs/sciweave-mcp-server/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Desci Labs Agentic Access](https://apis.io/agentic-access/desci-labs/desci-labs-agentic-access/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [dPID Resolver Data API](https://apis.io/collections/desci-labs/open-desci-labs-data-api/)
+- [dPID Resolver Data Query API](https://apis.io/collections/desci-labs/open-desci-labs-query-api/)
+- [dPID Resolver Data Resolve API](https://apis.io/collections/desci-labs/open-desci-labs-resolve-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Desci Labs Dpid Resolver Overlay](https://apis.io/overlays/desci-labs/desci-labs-dpid-resolver-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Desci Labs Authentication](https://apis.io/security/desci-labs/desci-labs-authentication/)
+- [Desci Labs Domain Security](https://apis.io/security/desci-labs/desci-labs-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.desci.com/)
+- [Documentation](https://docs.desci.com)
+- [Getting started](https://github.com/desci-labs/nodes-integration-template)
+- [API reference](https://beta.dpid.org/api-docs/)
+- [Sign up](https://nodes.desci.com)
+- [Support](https://docs.desci.com/find-help)
+- [Blog](https://www.desci.com/blog)
+- [Terms of service](https://www.desci.com/terms-of-service)
+- [Privacy policy](https://www.desci.com/privacy)
+- [GitHub](https://github.com/desci-labs)
+- [Status](https://status.desci.com)
+
+## API Evangelist rating
+
+**Kin Score 43.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 44.6 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 34.2 |
+
+**Agent readiness 52.1** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/desci-labs/](https://apis.io/providers/desci-labs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DeSci Labs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/desci-labs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
